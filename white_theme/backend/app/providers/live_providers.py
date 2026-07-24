@@ -14,6 +14,7 @@ import logging
 import re
 from typing import Any
 
+from fastapi import params
 import httpx
 
 from app.core.config import settings
@@ -29,9 +30,17 @@ def _strip_html(value: str = "") -> str:
     return re.sub(r"\s+", " ", re.sub(r"<[^>]*>", " ", value or "")).strip()
 
 
-async def _get_json(url: str, headers: dict | None = None) -> Any:
+async def _get_json(
+    url: str,
+    headers: dict | None = None,
+    params: dict | None = None,
+) -> Any:
     async with httpx.AsyncClient(timeout=_TIMEOUT, headers=_HEADERS) as client:
-        response = await client.get(url, headers=headers or {})
+        response = await client.get(
+            url,
+            headers=headers or {},
+            params=params,
+        )
         response.raise_for_status()
         return response.json()
 
@@ -48,14 +57,23 @@ class JSearchProvider(BaseProvider):
             return []
 
         full_query = f"{query} {location or ''}".strip()
+        print("JSEARCH QUERY:", full_query)
         try:
             payload = await _get_json(
-                f"https://jsearch.p.rapidapi.com/search?query={full_query}&page=1&num_pages=1&date_posted=all",
-                headers={
-                    "X-RapidAPI-Key": settings.JSEARCH_API_KEY,
-                    "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
-                },
+            "https://jsearch.p.rapidapi.com/search-v2",
+            headers={
+            "X-RapidAPI-Key": settings.JSEARCH_API_KEY,
+            "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
+            },
+            params={
+            "query": full_query,
+            "page": 1,
+            "num_pages": 1,
+            "country":"in",
+            "date_posted":"all",
+            },
             )
+            print("JSEARCH RESULTS:", len(payload.get("data", [])))
         except httpx.HTTPError as exc:
             raise ProviderError(f"JSearch request failed: {exc}") from exc
 

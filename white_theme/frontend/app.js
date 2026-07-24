@@ -5,7 +5,9 @@ const h = React.createElement;
 // hackathons, notifications). Runs separately from this Node server --
 // override at runtime via window.OPPORTUNITY_OS_API if it's deployed
 // somewhere other than localhost:8000.
-const API_BASE = window.OPPORTUNITY_OS_API || 'http://127.0.0.1:8000';
+const API_BASE = window.OPPORTUNITY_OS_API || (window.location.port === '5173'
+  ? 'http://127.0.0.1:8000'
+  : window.location.origin);
 
 function authToken() {
   return localStorage.getItem('auth_token') || '';
@@ -551,12 +553,12 @@ function AIWorkspaceView({ jobs, onInspectJob }) {
           h('div', { className: 'ats-score-display' },
             h('div', null,
               h('strong', { style: { color: 'white', display: 'block' } }, 'ATS Match Score'),
-              h('span', { style: { fontSize: '12px', color: 'var(--text-muted)' } }, 'Based on current search feed')
+              h('span', { style: { fontSize: '12px', color: 'rgba(255,255,255,.78)' } }, 'Based on current search feed')
             ),
             h('div', { className: 'ats-score-num' }, `${atsScore}%`)
           ),
           h('div', null,
-            h('h4', { style: { color: 'white', marginBottom: '8px', fontSize: '13px' } }, 'Matched Core Skills'),
+            h('h4', { style: { color: 'var(--navy)', marginBottom: '8px', fontSize: '13px' } }, 'Matched Core Skills'),
             h('div', { className: 'skill-tag-group' },
               h('span', { className: 'skill-tag-matched' }, '✓ React.js'),
               h('span', { className: 'skill-tag-matched' }, '✓ Node.js'),
@@ -565,7 +567,7 @@ function AIWorkspaceView({ jobs, onInspectJob }) {
             )
           ),
           h('div', null,
-            h('h4', { style: { color: 'white', marginBottom: '8px', fontSize: '13px' } }, 'Missing Recommended Keywords'),
+            h('h4', { style: { color: 'var(--navy)', marginBottom: '8px', fontSize: '13px' } }, 'Missing Recommended Keywords'),
             h('div', { className: 'skill-tag-group' },
               h('span', { className: 'skill-tag-missing' }, '+ Docker / K8s'),
               h('span', { className: 'skill-tag-missing' }, '+ TypeScript Strict'),

@@ -11,7 +11,11 @@ ALGORITHM = settings.ALGORITHM
 ACCESS_TOKEN_EXPIRE_MINUTES = settings.ACCESS_TOKEN_EXPIRE_MINUTES
 
 pwd_context = CryptContext(
-    schemes=["bcrypt"],
+    # bcrypt_sha256 pre-hashes the password with SHA-256 before bcrypt,
+    # which removes bcrypt's hard 72-byte password limit (the crash some
+    # users hit as "password cannot be longer than 72 bytes"). Plain
+    # "bcrypt" is kept only so any previously-created hashes still verify.
+    schemes=["bcrypt_sha256", "bcrypt"],
     deprecated="auto",
 )
 
@@ -24,10 +28,15 @@ def verify_password(
     plain_password: str,
     hashed_password: str,
 ) -> bool:
-    return pwd_context.verify(
-        plain_password,
-        hashed_password,
-    )
+    try:
+        return pwd_context.verify(
+            plain_password,
+            hashed_password,
+        )
+    except ValueError:
+        # Defensive fallback: never 500 the login route because of a
+        # malformed/legacy hash or an over-length raw password.
+        return False
 
 
 def create_access_token(

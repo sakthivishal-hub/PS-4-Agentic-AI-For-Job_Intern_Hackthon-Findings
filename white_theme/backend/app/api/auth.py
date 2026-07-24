@@ -36,7 +36,7 @@ def register(
 
     except ValueError as e:
         raise HTTPException(
-            status_code=500,
+            status_code=status.HTTP_409_CONFLICT,
             detail=str(e),
         )
 
