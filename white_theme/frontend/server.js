@@ -436,9 +436,20 @@ http.createServer((request, response) => {
     console.error('[Research Route Error]', err);
     response.writeHead(500).end(JSON.stringify({ results: [] }));
   });
-  if (url.pathname === '/api/jobs') return jobsResponse(url, response).catch(err => {
-    console.error('[Unhandled Express Route Failure]', err);
-    response.writeHead(500).end(JSON.stringify({ jobs: [], failedSources: Object.keys(sources) }));
-  });
+ if (url.pathname === '/api/jobs') {
+    return fetch(`http://127.0.0.1:8000/api/jobs${url.search}`)
+        .then(r => r.text())
+        .then(data => {
+            response.writeHead(200, {
+                "Content-Type": "application/json"
+            });
+            response.end(data);
+        })
+        .catch(err => {
+            console.error(err);
+            response.writeHead(500);
+            response.end(err.message);
+        });
+}
   serveStatic(url.pathname, response);
-}).listen(port, '127.0.0.1', () => console.log(`SignalHire Production Server running at http://127.0.0.1:${port}`));
+}).listen(port, '127.0.0.1', () => console.log(`SignalHire Production Server running at http://127.0.0.1:${port}`));  
