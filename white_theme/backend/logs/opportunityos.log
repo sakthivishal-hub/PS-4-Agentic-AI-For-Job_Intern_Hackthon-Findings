@@ -1,0 +1,9 @@
+2026-07-25 06:26:31,692 | INFO     | app.core.lifespan | ============================================================
+2026-07-25 06:26:31,693 | INFO     | app.core.lifespan | Starting OpportunityOS...
+2026-07-25 06:26:31,693 | INFO     | app.core.lifespan | Initializing application...
+2026-07-25 06:26:31,693 | INFO     | app.core.lifespan | ============================================================
+2026-07-25 06:26:31,693 | INFO     | app.providers.live_providers | Registered 4 live opportunity providers
+2026-07-25 06:26:31,699 | INFO     | apscheduler.scheduler | Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-07-25 06:26:31,701 | INFO     | apscheduler.scheduler | Added job "_run_notification_sweep" to job store "default"
+2026-07-25 06:26:31,701 | INFO     | apscheduler.scheduler | Scheduler started
+2026-07-25 06:26:31,701 | INFO     | app.services.notification_scheduler | Notification scheduler started (interval=6h)
