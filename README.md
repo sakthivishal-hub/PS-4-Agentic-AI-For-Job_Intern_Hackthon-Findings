@@ -56,6 +56,9 @@ Note:-
 3) White and Blue Advanced Features.
    Our Project Uploaded Youtube Video :-https://youtu.be/RGpWpPnypoo?si=YOs3xxWTBVODzchX
 
+   Key Aspect:-
+   .env file cant be exposed but I just attached my .env file here, because to run in your pc sometimes the other apikeys are the default of yours can make mistakes too ,so try with us the problem basically comes on system configurations.
+
 Frontend and Backend Setup:-
 
 Step 1: Clone the Repository
