@@ -56,123 +56,100 @@ Note:-
 3) White and Blue Advanced Features.
    Our Project Uploaded Youtube Video :-https://youtu.be/RGpWpPnypoo?si=YOs3xxWTBVODzchX
 
-Frontend And Backend Activation:-
+Frontend and Backend Setup:-
 
-Steps To Run Our Project:-
-tep 1: Open VS Code
+Step 1: Clone the Repository
+git clone <repository-url>
 
-Open the Siganlfire folder By cloning or online Activation.
+cd SignalFire
+Choose the theme you want to run:
+
+black_theme
+
+or
+
+white_theme
+Step 2: Open the Project
+
+Open the selected theme folder in Visual Studio Code.
 
 Example:
 
-Signalfire/
+SignalFire/
 │
-├── black_theme/|──frontend
-               |──backend  
+├── black_theme/
+│   ├── frontend/
+│   └── backend/
+│
+└── white_theme/
+    ├── frontend/
+    └── backend/
+Step 3: Open Two Terminals
 
-├── white_theme/|──frontend
-                |──backend
-                
-Step 2: Open Two Terminals
+Open two terminals in VS Code.
 
-In VS Code:
+Terminal 1 → Backend
+Terminal 2 → Frontend
+⚙️ Run the Backend
 
-Terminal → New Terminal
+In Terminal 1:
 
-Create 2 terminals.
-
-You should have:
-
-Terminal 1
-Terminal 2
-
-Step 3: Run the Backend
-
-In Terminal 1:-
-
-Move to the backend folder.
 cd backend
-If using Windows and a virtual environment:
 
+Activate the virtual environment.
+
+Windows:
 venv\Scripts\activate
 or
 .\venv\Scripts\activate
 
-You'll see something like
-(venv)
-Now install packages if needed:
+Install dependencies (first time only):
+
 pip install -r requirements.txt
-Run FastAPI:
+
+Start the FastAPI server:
 
 uvicorn app.main:app --reload
-If your main file is named differently:
-uvicorn main:app --reload
-You should see something like:
-INFO: Uvicorn running on
-http://127.0.0.1:8000
 
-Step 4: Test the Backend:-
-
-Open your browser:
+The backend will run at:
 
 http://127.0.0.1:8000
-or
+
+You can verify it by opening:
+
 http://127.0.0.1:8000/docs
 
-Swagger UI should open.
-If it does, the backend is running successfully.
+Swagger UI should open successfully.
 
-Step 5: Run the Frontend:-
+💻 Run the Frontend
 
-In Terminal 2:-
+In Terminal 2:
 
-Go to the frontend folder.
 cd frontend
-Install packages:
+
+Install dependencies (first time only):
+
 npm install
 
-Run:
+Start the frontend:
 
-npm run dev
-or
 npm start
-depending on your project.
 
-You should see something like:
+The frontend will run at:
 
-Local:
+http://127.0.0.1:5173
+🌐 Open the Integrated Website
 
-http://localhost:517
-or
-http://localhost:3000
+Ensure both servers are running simultaneously:
 
-Step 6: Open the Frontend:-
+✅ Backend → http://127.0.0.1:8000
+✅ Frontend → http://127.0.0.1:5173
 
-Open
-http://localhost:5173
-or
-http://localhost:3000
-The frontend should load.
+Now open your browser and visit:
 
-Step 7: Connect Frontend to Backend
+http://127.0.0.1:5173
 
-If your frontend needs to call the backend, make sure the API URL is set correctly.
-For local development, it is usually:
-
-http://localhost:8000
-
-Example with Axios:
-
-axios.get("http://localhost:8000/api/jobs")
-or
-fetch("http://localhost:8000/api/jobs")
-
-Step 8: Both Servers Should Be Running
-Your terminals should look like this:
-Terminal 1 (Backend)
-Terminal 2 (Frontend)
-
-
+The integrated SignalFire application (Frontend + Backend) will load automatically.
 Future Improvements
 
 - Mobile App
