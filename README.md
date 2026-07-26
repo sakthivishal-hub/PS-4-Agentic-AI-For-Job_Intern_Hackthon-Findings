@@ -5,6 +5,11 @@ Project Description:-
 -Signalfire is an AI-powered Career Intelligence Platform that helps students and professionals discover personalized jobs, internships, hackathons, scholarships, and learning opportunities.
 -The platform analyzes a user's profile, resume, skills, and interests using AI to recommend the best opportunities from multiple sources.
 
+Project Web Host:-
+
+https://0a6abaab.ps-4-agentic-ai-for-job-intern-hackthon-findings.pages.dev/
+Due To API Key configuration we Turned Of Our Backend Datum Sources And The Web Works And Navigate Perfectly Pls Visit.
+
 Features:-
 
 - AI Resume Analysis
