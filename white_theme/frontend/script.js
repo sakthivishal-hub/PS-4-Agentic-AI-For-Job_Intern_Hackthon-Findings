@@ -46,7 +46,7 @@ function renderJobs(jobs) {
     node.querySelector('.source').textContent = job.source;
     node.querySelector('h2').textContent = job.title;
     node.querySelector('.company').textContent = job.company || 'Company not listed';
-    node.querySelector('.meta').textContent = `${job.location || 'Remote'} · ${formatDate(job.publishedAt)}`;
+    node.querySelector('.meta').textContent = `${job.location || 'Remote'} ï¿½ ${formatDate(job.publishedAt)}`;
     node.querySelector('.description').textContent = job.description || 'Open the listing for more details.';
     node.querySelector('.salary').textContent = job.salary || 'Salary not listed';
     node.querySelector('.tags').innerHTML = (job.tags || []).slice(0, 4).map(tag => `<span>${escapeHtml(tag)}</span>`).join('');
@@ -70,12 +70,12 @@ async function search() {
     return;
   }
   liveStatusEl.textContent = 'Searching live';
-  sourceStatusEl.textContent = `Checking ${activeSources.length} platform${activeSources.length === 1 ? '' : 's'}…`;
-  countEl.textContent = 'Fetching current jobs…';
+  sourceStatusEl.textContent = `Checking ${activeSources.length} platform${activeSources.length === 1 ? '' : 's'}ï¿½`;
+  countEl.textContent = 'Fetching current jobsï¿½';
   jobsEl.setAttribute('aria-busy', 'true');
   try {
     const params = new URLSearchParams({ q: query, city, region, sources: activeSources.join(',') });
-    const response = await fetch(`/api/jobs?${params}`);
+    const response = await fetch(`${API_BASE}/jobs?${params}`);
     if (!response.ok) throw new Error('Search service unavailable');
     const payload = await response.json();
     latestJobs = payload.jobs || [];

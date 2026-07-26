@@ -179,7 +179,7 @@ function LocationPromptModal({ isOpen, onClose, onSetLocation }) {
         async (pos) => {
           try {
             const { latitude, longitude } = pos.coords;
-            const res = await fetch(`/api/reverse-geocode?lat=${latitude}&lon=${longitude}`);
+            const res = await fetch(`${API_BASE}/reverse-geocode?lat=${latitude}&lon=${longitude}`);
             if (res.ok) {
               const data = await res.json();
               if (data.city) {
@@ -368,7 +368,7 @@ function DashboardView({ savedJobs, onToggleSave, jobs, setJobs, apiKey, userLoc
       });
       if (apiKey) params.append('jsearch_key', apiKey);
       
-      const response = await fetch(`/api/jobs?${params}`);
+      const response = await fetch(`${API_BASE}/jobs?${params}`);
       if (!response.ok) throw new Error('Search API endpoint offline');
       const payload = await response.json();
       setJobs(payload.jobs || []);
@@ -781,7 +781,7 @@ function HackathonsView() {
     setStatus('Searching live hackathons...');
     try {
       const params = new URLSearchParams({ q: query });
-      const res = await fetch(`/api/hackathons?${params}`);
+      const res = await fetch(`${API_BASE}/hackathons?${params}`);
       if (!res.ok) throw new Error('Hackathon search offline');
       const data = await res.json();
       setHackathons(data.hackathons || []);
@@ -884,7 +884,7 @@ function InternshipsView({ savedJobs, onToggleSave, onInspectJob, apiKey, userLo
         sources: 'jsearch,remotive,arbeitnow'
       });
       if (apiKey) params.append('jsearch_key', apiKey);
-      const res = await fetch(`/api/jobs?${params}`);
+      const res = await fetch(`${API_BASE}/jobs?${params}`);
       if (!res.ok) throw new Error('Search offline');
       const data = await res.json();
       const internships = (data.jobs || []).filter(j =>
@@ -1022,7 +1022,7 @@ function ResearchView() {
     try {
       const q = topicQueries[topic] || query;
       const params = new URLSearchParams({ q });
-      const res = await fetch(`/api/research?${params}`);
+      const res = await fetch(`${API_BASE}/research?${params}`);
       if (!res.ok) throw new Error('Research search offline');
       const data = await res.json();
       setResults(data.results || []);
