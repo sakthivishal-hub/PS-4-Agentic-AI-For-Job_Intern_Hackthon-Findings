@@ -38,3 +38,18 @@
 2026-07-25 06:48:12,640 | INFO     | httpx | HTTP Request: GET https://jsearch.p.rapidapi.com/search-v2?query=Software+Engineer+Chennai%2C+India&page=1&num_pages=1&country=in&date_posted=all "HTTP/1.1 200 OK"
 2026-07-25 06:48:12,643 | WARNING  | app.providers.base | [JSearch] fetch failed: 'str' object has no attribute 'get'
 2026-07-25 06:48:12,650 | INFO     | opportunityos | [ad3a0d46] GET /api/jobs -> 200 (7076.04 ms)
+2026-07-25 10:15:32,801 | INFO     | app.core.lifespan | ============================================================
+2026-07-25 10:15:32,801 | INFO     | app.core.lifespan | Starting OpportunityOS...
+2026-07-25 10:15:32,801 | INFO     | app.core.lifespan | Initializing application...
+2026-07-25 10:15:32,801 | INFO     | app.core.lifespan | ============================================================
+2026-07-25 10:15:32,801 | INFO     | app.providers.live_providers | Registered 4 live opportunity providers
+2026-07-25 10:15:32,803 | INFO     | apscheduler.scheduler | Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-07-25 10:15:32,817 | INFO     | apscheduler.scheduler | Added job "_run_notification_sweep" to job store "default"
+2026-07-25 10:15:32,817 | INFO     | apscheduler.scheduler | Scheduler started
+2026-07-25 10:15:32,817 | INFO     | app.services.notification_scheduler | Notification scheduler started (interval=6h)
+2026-07-25 10:17:40,888 | INFO     | opportunityos | [3e9f5cd0] GET /api/jobs
+2026-07-25 10:17:42,637 | INFO     | httpx | HTTP Request: GET https://remotive.com/api/remote-jobs?search=Software%20Engineer "HTTP/1.1 200 OK"
+2026-07-25 10:17:43,188 | INFO     | httpx | HTTP Request: GET https://remoteok.com/api "HTTP/1.1 200 OK"
+2026-07-25 10:17:44,441 | INFO     | httpx | HTTP Request: GET https://www.arbeitnow.com/api/job-board-api "HTTP/1.1 200 OK"
+2026-07-25 10:17:50,119 | INFO     | httpx | HTTP Request: GET https://jsearch.p.rapidapi.com/search-v2?query=Software+Engineer+Bangalore&page=1&num_pages=1&country=in&date_posted=all "HTTP/1.1 200 OK"
+2026-07-25 10:18:00,130 | INFO     | opportunityos | [3e9f5cd0] GET /api/jobs -> 200 (19242.17 ms)

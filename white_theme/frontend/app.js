@@ -5,9 +5,10 @@ const h = React.createElement;
 // hackathons, notifications). Runs separately from this Node server --
 // override at runtime via window.OPPORTUNITY_OS_API if it's deployed
 // somewhere other than localhost:8000.
-const API_BASE = window.OPPORTUNITY_OS_API || (window.location.port === '5173'
-  ? 'http://127.0.0.1:8000'
-  : window.location.origin);
+const API_BASE =
+  window.location.port === '5173'
+    ? 'http://127.0.0.1:8000'
+    : 'https://sinalfire-backend-production.up.railway.app';
 
 function authToken() {
   return localStorage.getItem('auth_token') || '';
