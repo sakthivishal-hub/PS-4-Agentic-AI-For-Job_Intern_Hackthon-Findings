@@ -146,7 +146,7 @@ npm start
 The frontend will run at:
 
 http://127.0.0.1:5173
-🌐 Open the Integrated Website
+Open the Integrated Website
 
 Ensure both servers are running simultaneously:
 
