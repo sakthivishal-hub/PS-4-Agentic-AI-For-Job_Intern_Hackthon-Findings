@@ -8,7 +8,7 @@ Project Description:-
 Project Web Host:-
 
 https://0a6abaab.ps-4-agentic-ai-for-job-intern-hackthon-findings.pages.dev/
-Due To API Key configuration we Turned Of Our Backend Datum Sources And The Web Works And Navigate Perfectly Pls Visit.
+Due To API Key configuration we Turned Of Our Backend Datum Sources And The Web Works And Navigate Perfectly.
 
 Features:-
 
